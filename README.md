@@ -383,7 +383,13 @@ MIT License - Built for Zupple Labs Assignment
 ## 👨‍💻 Author
 
 Mohd Abbas
-- LinkedIn: https://www.linkedin.com/in/mohd-abbas-a7824a2b9
+PhoneNo: 9719601762
+email: mohdabbas971960176@gmail.com
+LinkedIn: https://www.linkedin.com/in/mohd-abbas-a7824a2b9
+geeksforgeeks: https://www.geeksforgeeks.org/user/mohdabbas971960176/
+leetcode: https://leetcode.com/u/mohdabbas971960176/
+.hackerrank: https://www.hackerrank.com/profile/mohdabbas9719602
+Portfolio: https://v0-dynamic-portfolio-website-theta.vercel.app/
 
 ---
 
