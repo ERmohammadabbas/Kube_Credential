@@ -1,0 +1,76 @@
+openapi: 3.0.0
+info:
+  title: Credential Issuance Service API
+  description: API for issuing credentials
+  version: 1.0.0
+servers:
+  - url: http://localhost:3001
+    description: Development server
+paths:
+  /health:
+    get:
+      summary: Health check
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: healthy
+                  worker:
+                    type: string
+                    example: worker-abc123
+                  timestamp:
+                    type: string
+                    format: date-time
+  /issue:
+    post:
+      summary: Issue a new credential
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                id: "CRED-12345"
+                name: "John Doe"
+                role: "Developer"
+      responses:
+        '201':
+          description: Credential issued successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Credential issued by worker-abc123"
+                  worker:
+                    type: string
+                    example: "worker-abc123"
+                  credentialId:
+                    type: string
+                    example: "CRED-12345"
+                  timestamp:
+                    type: string
+                    format: date-time
+        '409':
+          description: Credential already issued
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Credential already issued"
+        '400':
+          description: Invalid credential format
+        '500':
+          description: Internal server error

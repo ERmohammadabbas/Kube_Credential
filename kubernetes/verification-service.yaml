@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: verification-service
+  labels:
+    app: verification-service
+spec:
+  type: ClusterIP
+  selector:
+    app: verification-service
+  ports:
+  - protocol: TCP
+    port: 3002
+    targetPort: 3002
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: verification-data-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi

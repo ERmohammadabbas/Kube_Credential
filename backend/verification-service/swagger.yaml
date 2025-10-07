@@ -1,0 +1,79 @@
+openapi: 3.0.0
+info:
+  title: Credential Verification Service API
+  description: API for verifying credentials
+  version: 1.0.0
+servers:
+  - url: http://localhost:3002
+    description: Development server
+paths:
+  /health:
+    get:
+      summary: Health check
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: healthy
+                  worker:
+                    type: string
+                    example: verifier-abc123
+                  timestamp:
+                    type: string
+                    format: date-time
+  /verify:
+    post:
+      summary: Verify a credential
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+              example:
+                id: "CRED-12345"
+                name: "John Doe"
+      responses:
+        '200':
+          description: Credential is valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "valid"
+                  worker:
+                    type: string
+                    example: "worker-abc123"
+                  timestamp:
+                    type: string
+                    format: date-time
+                  credential:
+                    type: object
+        '404':
+          description: Credential not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "invalid"
+                  message:
+                    type: string
+                    example: "Credential not found"
+        '400':
+          description: Invalid credential format
+        '500':
+          description: Internal server error

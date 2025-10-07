@@ -1,0 +1,38 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kube-credential-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: kube-credential.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend
+            port:
+              number: 80
+      - path: /api/issue
+        pathType: Prefix
+        backend:
+          service:
+            name: issuance-service
+            port:
+              number: 3001
+      - path: /api/verify
+        pathType: Prefix
+        backend:
+          service:
+            name: verification-service
+            port:
+              number: 3002
+  tls:
+  - hosts:
+    - kube-credential.example.com
+    secretName: kube-credential-tls
