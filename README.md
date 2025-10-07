@@ -382,10 +382,8 @@ MIT License - Built for Zupple Labs Assignment
 
 ## 👨‍💻 Author
 
-[Your Name]
-- Portfolio: [Your Portfolio URL]
-- LinkedIn: [Your LinkedIn]
-- GitHub: [Your GitHub]
+Mohd Abbas
+- LinkedIn: https://www.linkedin.com/in/mohd-abbas-a7824a2b9
 
 ---
 
